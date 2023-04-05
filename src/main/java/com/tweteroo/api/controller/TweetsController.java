@@ -6,21 +6,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tweteroo.api.DTO.UserDTO;
-import com.tweteroo.api.model.User;
-import com.tweteroo.api.service.UserService;
+import com.tweteroo.api.DTO.TweetsDTO;
+import com.tweteroo.api.model.Tweets;
+import com.tweteroo.api.service.TweetsService;
 
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/sign-up")
-public class UserController {
-
+@RequestMapping("/tweets")
+public class TweetsController {
+    
     @Autowired
-    private UserService service;
+    private TweetsService service;
 
     @PostMapping
-    public String postUser(@RequestBody @Valid UserDTO req) {
-        return service.create(new User(req));
+    private String postTweet(@RequestBody @Valid TweetsDTO req) {
+        return service.create(new Tweets(req));
     }
+
 }
