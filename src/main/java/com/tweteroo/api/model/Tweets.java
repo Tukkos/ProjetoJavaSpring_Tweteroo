@@ -3,10 +3,16 @@ package com.tweteroo.api.model;
 import com.tweteroo.api.DTO.TweetsDTO;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Entity
+@NoArgsConstructor
 public class Tweets {
     
     public Tweets(TweetsDTO data) {
