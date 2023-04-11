@@ -12,7 +12,12 @@ public class UserService {
     @Autowired
     private UserRepository repository;
 
-    public void create(User data) {
+    public String create(User data) {
         repository.save(data);
+        return "OK";
+    }
+
+    public User findUserByName(String data) {
+        return repository.findByName(data);
     }
 }

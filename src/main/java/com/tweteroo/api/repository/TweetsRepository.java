@@ -1,9 +1,15 @@
-// package com.tweteroo.api.repository;
+package com.tweteroo.api.repository;
 
-// import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
 
-// import com.tweteroo.api.model.Tweets;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-// public interface TweetsRepository extends JpaRepository<Tweets, Long> {
-    
-// }
+import com.tweteroo.api.model.Tweets;
+
+@Repository
+public interface TweetsRepository extends JpaRepository<Tweets, Long> {
+
+    public Optional<Tweets> findByName(String name);
+
+}
