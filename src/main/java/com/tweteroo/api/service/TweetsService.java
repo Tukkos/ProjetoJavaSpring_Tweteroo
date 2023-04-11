@@ -1,6 +1,11 @@
 package com.tweteroo.api.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.tweteroo.api.DTO.TweetsDTO;
@@ -25,5 +30,24 @@ public class TweetsService {
         repository.save(new Tweets(newTweet));
         return "OK";
     }
+
+    public Page<Tweets> getFiveTweetsPerPage(String query) {
+        int page;
+
+        if(query != null) {
+            try {
+                page = Integer.parseInt(query);
+            } catch (Exception e) {
+                page = 1;
+            }
+        } else {
+            page = 1;
+        }
+
+        return repository.findAll(PageRequest.of(page, 5, Sort.by(Sort.Direction.DESC, "id")));
+    }
     
+    public Optional<Tweets> getAllTweetsByUser(String username) {
+        return repository.findByName(username);
+    }
 }
