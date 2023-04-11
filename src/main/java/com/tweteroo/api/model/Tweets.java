@@ -22,7 +22,7 @@ public class Tweets {
     @Column(length = 50, nullable = false)
     private String username;
 
-    @Column(length = 50, nullable = false)
+    @Column(length = 50, nullable = true)
     private String avatar;
 
     @Column(length = 500, nullable = false)

@@ -16,4 +16,8 @@ public class UserService {
         repository.save(data);
         return "OK";
     }
+
+    public User findUserByName(String data) {
+        return repository.findByName(data);
+    }
 }

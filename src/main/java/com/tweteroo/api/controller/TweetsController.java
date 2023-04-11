@@ -21,7 +21,10 @@ public class TweetsController {
 
     @PostMapping
     private String postTweet(@RequestBody @Valid TweetsDTO req) {
-        return service.create(new Tweets(req));
+
+        String name = req.username();
+
+        return service.create(name, new Tweets(req));
     }
 
 }
